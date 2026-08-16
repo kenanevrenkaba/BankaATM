@@ -1,20 +1,18 @@
-﻿using System.Globalization;
-
-namespace BankaATM;
+﻿namespace BankaATM;
 
 public class Hesap
 {
     public string HesapNumarasi { get; private set; }
     public Musteri HesapSahibi { get; private set; }
     public decimal Bakiye { get; private set; }
-    
-    public Hesap (string hesapNumarasi, Musteri hesapSahibi, decimal bakiye)
+
+    public Hesap(string hesapNumarasi, Musteri hesapSahibi, decimal bakiye)
     {
         HesapNumarasi = hesapNumarasi;
         HesapSahibi = hesapSahibi;
         Bakiye = bakiye;
     }
-    
+
 
     public bool ParaYatir(decimal miktar)
     {
@@ -22,6 +20,7 @@ public class Hesap
         {
             return false;
         }
+
         Bakiye += miktar;
         return true;
     }
@@ -32,6 +31,7 @@ public class Hesap
         {
             return false;
         }
+
         Bakiye -= miktar;
         return true;
     }

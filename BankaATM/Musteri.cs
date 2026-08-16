@@ -8,7 +8,8 @@ public class Musteri
     public string TelefonNumarasi { get; private set; }
     public string PinKodu { get; private set; }
 
-    public Musteri(string musteriNumarasi, string adSoyad, string kimlikNumarasi, string telefonNumarasi, string pinKodu)
+    public Musteri(string musteriNumarasi, string adSoyad, string kimlikNumarasi, string telefonNumarasi,
+        string pinKodu)
     {
         MusteriNumarasi = musteriNumarasi;
         AdSoyad = adSoyad;

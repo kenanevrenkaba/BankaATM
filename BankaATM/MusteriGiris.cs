@@ -2,40 +2,40 @@
 
 public class MusteriGiris
 {
-    public static Hesap MusteriAl(List<Hesap> tumHesaplar)
+    public static Hesap? MusteriAl(List<Hesap> tumHesaplar)
     {
         Console.WriteLine("Müşteri Numaranızı giriniz:");
-        string musteriNo = Console.ReadLine();
+        string musteriNo = Console.ReadLine() ?? "";
 
-        while (string.IsNullOrEmpty(musteriNo) && !musteriNo.All(char.IsDigit))
+        while (string.IsNullOrWhiteSpace(musteriNo) || !musteriNo.All(char.IsDigit))
         {
             Console.WriteLine("Lütfen geçerli bir giriş yapınız.");
             Console.WriteLine("Müşteri Numaranızı giriniz:");
-            musteriNo = Console.ReadLine();
+            musteriNo = Console.ReadLine() ?? "";
         }
 
-        Hesap girisYapanHesap = tumHesaplar.Find(h => h.HesapSahibi.MusteriNumarasi == musteriNo);
-            
-        if (girisYapanHesap == null)
+        Hesap? girisYapanHesap = tumHesaplar.Find(h => h.HesapSahibi.MusteriNumarasi == musteriNo);
+
+        if (girisYapanHesap is null)
         {
             Console.WriteLine("Hesap bulunamadı.");
             return null;
         }
 
         Console.WriteLine("PIN Kodunuzu giriniz:");
-        string pin = Console.ReadLine();
+        string pin = Console.ReadLine() ?? "";
 
 
-        while (string.IsNullOrEmpty(pin) && !pin.All(char.IsDigit))
+        while (string.IsNullOrWhiteSpace(pin) && !pin.All(char.IsDigit))
         {
             Console.WriteLine("Lütfen geçerli bir giriş yapınız.\nPIN Kodunuzu giriniz:");
-            pin = Console.ReadLine();
+            pin = Console.ReadLine() ?? "";
         }
 
         while (girisYapanHesap.HesapSahibi.PinKodu != pin)
         {
             Console.WriteLine("Hatalı PIN Kodu.\nPIN Kodunuzu giriniz: ");
-            pin = Console.ReadLine();
+            pin = Console.ReadLine() ?? "";
         }
 
         return girisYapanHesap;

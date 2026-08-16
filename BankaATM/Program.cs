@@ -17,7 +17,7 @@ string secim = "";
 
 while (secim != "H")
 {
-    Hesap girisYapanMusteri = MusteriGiris.MusteriAl(tumHesaplar);
+    Hesap? girisYapanMusteri = MusteriGiris.MusteriAl(tumHesaplar);
 
     if (girisYapanMusteri == null)
     {
@@ -25,7 +25,7 @@ while (secim != "H")
     }
 
     string islemSecim = IslemSecim.IslemSec();
-    
+
 
     if (islemSecim == "Y")
     {
