@@ -1,6 +1,6 @@
 ﻿namespace BankaATM;
 
-public class PinUret
+public static class PinUret
 {
     public static string Pin()
     {
@@ -12,7 +12,7 @@ public class PinUret
             int randomIndex = rnd.Next(0, karakterHavuzu.Length);
             pin += karakterHavuzu[randomIndex];
         }
-            
+
         return pin;
     }
 }
