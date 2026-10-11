@@ -17,4 +17,9 @@ public class Musteri
         TelefonNumarasi = telefonNumarasi;
         PinKodu = pinKodu;
     }
+    
+    public void PinGuncelle(string yeniPin)
+    {
+        PinKodu = yeniPin;
+    }
 }

@@ -14,15 +14,13 @@ public class Hesap
     }
 
 
-    public bool ParaYatir(decimal miktar)
+    public void ParaYatir(decimal miktar)
     {
-        if (miktar <= 0)
+        if (miktar > 0)
         {
-            return false;
+            Bakiye += miktar;
         }
-
-        Bakiye += miktar;
-        return true;
+        
     }
 
     public bool ParaCek(decimal miktar)

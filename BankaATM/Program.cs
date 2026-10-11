@@ -20,7 +20,7 @@ while (true)
 {
     try
     {
-        Console.WriteLine("\nHoş Geldiniz...\n");
+        Bicim.Renkli("\nHoş Geldiniz...\n", ConsoleColor.DarkGreen);
 
         Hesap? girisYapanMusteri = MusteriGiris.MusteriAl(tumHesaplar);
 
@@ -29,72 +29,25 @@ while (true)
             continue;
         }
 
-        string secim = "E";
+       Islemler.MusteriIslemDongusu(girisYapanMusteri, tumHesaplar);
+       
 
-        while (secim == "E")
-        {
-            string islemSecim =
-                IslemSecim.IslemSec(
-                    "\nYapmak istediğiniz işlemi seçiniz.\n\nPara Yatırma: (Y)\n\nPara Çekme: (Ç)\n\nBakiye Sorgulama: (B)\n\nÇıkış Yapmak İçin: (X) tuşuna basın.\n\nY/Ç/B:\n");
+        Bicim.Renkli("\nSağlıklı günler dileriz...\n", ConsoleColor.Green);
 
-
-            if (islemSecim == "Y")
-            {
-                decimal miktar = IslemSecim.MiktarAl("\nYatırmak istediğiniz miktarı giriniz:\n");
-
-                girisYapanMusteri.ParaYatir(miktar);
-
-                Console.WriteLine("\nHesabınıza " + miktar +
-                                  "TL para yatırma işlemi gerçekleştirdiniz.\n\nGüncel bakiyeniz: " +
-                                  girisYapanMusteri.Bakiye + " TL\n");
-
-                DosyaYoneticisi.Kaydet(tumHesaplar);
-            }
-
-            else if (islemSecim == "Ç")
-            {
-                decimal miktar = IslemSecim.MiktarAl("\nÇekmek istediğiniz miktarı giriniz:\n");
-
-                girisYapanMusteri.ParaCek(miktar);
-
-                Console.WriteLine("\nHesabınızdan " + miktar +
-                                  "TL para çekme işlemi gerçekleştirdiniz.\n\nGüncel bakiyeniz: " +
-                                  girisYapanMusteri.Bakiye + " TL\n");
-
-                DosyaYoneticisi.Kaydet(tumHesaplar);
-            }
-
-            else if (islemSecim == "B")
-            {
-                Console.WriteLine($"\nGüncel bakiyeniz: {girisYapanMusteri.Bakiye} TL\n");
-            }
-
-            else if (islemSecim == "X")
-            {
-                string onay = IslemSecim.EvetHayirAl("\nÇıkış yapmak istiyor musunuz? E/H:\n");
-
-                if (onay != "E")
-                {
-                    continue;
-                }
-
-                break;
-            }
-
-            secim = IslemSecim.EvetHayirAl("Başka işlem yapmak istiyor musunuz? E/H:\n");
-        }
-
-        Console.Write("\nSağlıklı günler dileriz...");
+        Bicim.Renkli("\nSistem birazdan devreye girecektir.", ConsoleColor.DarkYellow);
 
         Thread.Sleep(10000);
 
         Console.Clear();
     }
+
     catch (ZamanAsimiException e)
     {
-        Console.WriteLine(e.Message);
+        Bicim.Renkli(e.Message, ConsoleColor.DarkRed);
 
-        Console.Write("\nSağlıklı günler dileriz...");
+        Bicim.Renkli("\nSağlıklı günler dileriz...\n", ConsoleColor.Green);
+
+        Bicim.Renkli("\nSistem birazdan devreye girecektir.", ConsoleColor.DarkYellow);
 
         Thread.Sleep(10000);
 
